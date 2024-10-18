@@ -34,6 +34,19 @@ mongoose.connect('mongodb+srv://Rajveer:Rajjo123@cluster0.jdl76.mongodb.net/',
         }
       });
 
+      app.get('/songs/artist/:name', async (req, res) => {
+        try {
+          const artistName = req.params.name.toLowerCase();
+          const songs = await Song.find({ 'artistData.name': new RegExp(artistName, 'i') }); // Fetch by artist name
+          if (songs.length > 0) {
+            res.status(200).json(songs);
+          } else {
+            res.status(404).json({ message: 'No songs found for this artist' });
+          }
+        } catch (err) {
+          res.status(500).json({ message: 'Error fetching songs' });
+        }
+      });
 
 
 // Start server
