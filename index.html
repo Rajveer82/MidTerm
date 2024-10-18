@@ -32,6 +32,13 @@
         .then(data => document.getElementById('results').textContent = JSON.stringify(data, null, 2))
         .catch(error => console.error('Error:', error));
     });
+    document.getElementById('getSongsByArtist').addEventListener('click', () => {
+      const artistName = prompt('Enter Artist Name:');
+      fetch(`/songs/artist/${artistName}`)
+        .then(response => response.json())
+        .then(data => document.getElementById('results').textContent = JSON.stringify(data, null, 2))
+        .catch(error => console.error('Error:', error));
+    });
   </script>
 </body>
 </html>
