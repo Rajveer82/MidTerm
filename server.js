@@ -11,3 +11,11 @@ mongoose.connect('mongodb+srv://Rajveer:Rajjo123@cluster0.jdl76.mongodb.net/',
   )
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('MongoDB connection error:', err));
+
+
+
+
+// Start server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
